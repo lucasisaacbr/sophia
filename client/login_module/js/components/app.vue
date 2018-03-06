@@ -7,12 +7,14 @@
         </div>
         <div id="body-right">
             <div id="form-container">
-                <h1>
-                    Teste
-                </h1>
+                <div id="app-name">
+                    <h1>Sophia Smart Assistant</h1>
+                </div>
+
+
             </div>
 
-            <div id="utils">
+            <div id="utils">`
                 <h6>teste 2</h6>
             </div>
         </div>
@@ -25,7 +27,7 @@
 
 		module.exports = {
 			"props": [],
-			"name": "ReportsApp",
+			"name": "LoginModule",
 			"components": {
 			},
 			"data": function () {
@@ -46,6 +48,7 @@
         display: flex;
         height: 100%;
         width: 100%;
+        font-family: 'Source Sans Pro', sans-serif;
     }
 
     #body-left {
@@ -64,6 +67,11 @@
         flex-flow: column;
         width: 50%;
         align-self: center;
+    }
+
+    #form-btn {
+        background-color: darkslateblue;
+        color: white;
     }
 
 </style>
