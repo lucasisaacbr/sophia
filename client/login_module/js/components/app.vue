@@ -10,8 +10,7 @@
                 <div id="app-name">
                     <h1>Sophia Smart Assistant</h1>
                 </div>
-
-
+                <login-form></login-form>
             </div>
 
             <div id="utils">`
@@ -29,6 +28,7 @@
 			"props": [],
 			"name": "LoginModule",
 			"components": {
+				"loginForm": require("../components/loginForm.vue")
 			},
 			"data": function () {
 				return {
