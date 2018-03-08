@@ -4,7 +4,7 @@
 	const LocalStrategy = require("passport-local").Strategy;
 	const localConfigs = require("../helpers/security");
 
-	module.exports = function (passport, db_factory) {
+	module.exports = function (passport, cloudantFactory) {
 
 		passport.serializeUser(function (user, done) {
 			done(null, user);
@@ -16,29 +16,32 @@
 
 		passport.use(new LocalStrategy(
 			function (username, password, done) {
-				// db_factory.make_query("SELECT * FROM aluno WHERE email = $1", username).then(function (data) {
-				// 	if (data.rows.length > 0) {
-				// 		const result = data.rows[0];
-				// 		localConfigs.validateHash(password, result.senha).then(function (data) {
-				// 			if (data){
-				// 				return done(null, {
-				// 					"username": username,
-				// 					"id": result.ra
-				// 				});
-				// 			} else {
-				// 				return done(null, false)
-				// 			}
-				// 		}).catch(function (err) {
-				// 			return done(null, false);
-				// 		})
-				// 	} else {
-				// 		return done(null, false);
-				// 	}
-				// }).catch((err) => {
-				// 	console.log(err);
-				// 	return done(null);
-				//
-				// });
+				cloudantFactory.get("usuario", {
+					"selector": {
+						"user": {
+							"$eq": username
+						}
+					},
+					"fields": [
+						"user",
+						"password"
+					]
+				}).then(function (data) {
+					const result = data.docs[0];
+					localConfigs.validateHash(password, result.password).then(function (validUser) {
+						console.log(validUser);
+						return done (null, {
+							"username": username,
+							"id": result.ra
+						}).catch(function (err) {
+							console.log(err);
+							return done(null, false);
+						});
+					});
+				}).catch(function (err) {
+					console.log(err);
+					return done(null);
+				});
 			})
 		)
 	}
