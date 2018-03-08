@@ -16,7 +16,7 @@
 
 	// Cloudant
 	const cloudantConfig = require("./server/configs/cloudant").init;
-	const cloudantFactory = require("./server/helpers/cloudant");
+	const cloudantFactory = require("./server/helpers/cloudant")(cloudantConfig);
 
 	// Conversation
 	const conversationConfig = require("./server/configs/conversation");
@@ -25,7 +25,7 @@
 
 	// Login dependencies
 	const passport = require("passport");
-	// const passportFactory = require("./server/helpers/passport")(passport, dbFactory);
+	const passportFactory = require("./server/helpers/passport")(passport, cloudantFactory);
 
 	const app = express();
 
@@ -63,7 +63,6 @@
 
 	app.listen(port, function () {
 		console.log("Server is running on port " + port);
-
 	});
 
 }());
