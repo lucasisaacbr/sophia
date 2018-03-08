@@ -29,14 +29,11 @@
 				}).then(function (data) {
 					const result = data.docs[0];
 					localConfigs.validateHash(password, result.password).then(function (validUser) {
-						console.log(validUser);
 						return done (null, {
 							"username": username,
-							"id": result.ra
-						}).catch(function (err) {
-							console.log(err);
-							return done(null, false);
 						});
+					}).catch(function (err) {
+						return done(null, false);
 					});
 				}).catch(function (err) {
 					console.log(err);
