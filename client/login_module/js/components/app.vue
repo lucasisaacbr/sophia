@@ -13,7 +13,7 @@
                 <login-form></login-form>
             </div>
 
-            <div id="utils">`
+            <div id="utils">
                 <h6>teste 2</h6>
             </div>
         </div>
@@ -32,11 +32,13 @@
 			},
 			"data": function () {
 				return {
-
+                    "view": "login"
 				}
 			},
 			"methods": {
-
+                "changeView": function (view) {
+                    this.view = view;
+				}
 			}
 		};
 
@@ -61,17 +63,24 @@
     }
 
     #body-right {
+        height: 100%;
+        justify-content: center;
         align-items: center;
-        align-content: center;
         display: flex;
         flex-flow: column;
         width: 50%;
-        align-self: center;
     }
 
     #form-btn {
         background-color: darkslateblue;
         color: white;
     }
+
+    #form-container {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+
 
 </style>
