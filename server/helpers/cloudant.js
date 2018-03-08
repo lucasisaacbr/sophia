@@ -1,9 +1,9 @@
 (function () {
 	"use strict";
-	module.exports = function (Cloudant, collectionName) {
-		const db = Cloudant.db.use(collectionName);
+	module.exports = function (Cloudant) {
 		return {
-			"create": function (payload) {
+			"create": function (collection, payload) {
+				const db = Cloudant.db.use(collection);
 				return new Promise(function (resolve, reject) {
 					db.insert(payload, function(err, data) {
 						if (err) {
@@ -13,7 +13,8 @@
 					});
 				});
 			},
-			"get": function (query) {
+			"get": function (collection, query) {
+				const db = Cloudant.db.use(collection);
 				return new Promise(function (resolve, reject) {
 
 					if (!query) {
@@ -31,7 +32,8 @@
 					});
 				});
 			},
-			"getAll": function (params) {
+			"getAll": function (collection, params) {
+				const db = Cloudant.db.use(collection);
 				return new Promise(function (resolve, reject) {
 					db.list(params, function (err, data) {
 						if (err) {
@@ -42,7 +44,8 @@
 					});
 				});
 			},
-			"delete": function (docId, docRev) {
+			"delete": function (collection, docId, docRev) {
+				const db = Cloudant.db.use(collection);
 				return new Promise(function (resolve, reject) {
 					db.destroy(docId, docRev, function (err) {
 						if (err) {
@@ -52,7 +55,8 @@
 					});
 				});
 			},
-			"update": function (payload) {
+			"update": function (collection, payload) {
+				const db = Cloudant.db.use(collection);
 				return new Promise(function (resolve, reject) {
 					db.insert(payload, function (err, data) {
 						if (err) {
@@ -62,7 +66,8 @@
 					});
 				});
 			},
-			"bulkInsert": function (docs) {
+			"bulkInsert": function (collection, docs) {
+				const db = Cloudant.db.use(collection);
 				return new Promise(function (resolve, reject) {
 
 					if (typeof docs !== "object") {
