@@ -23,14 +23,17 @@
 						}
 					},
 					"fields": [
-						"user",
+						"username",
 						"password"
 					]
 				}).then(function (data) {
 					const result = data.docs[0];
 					localConfigs.validateHash(password, result.password).then(function (validUser) {
 						return done (null, {
-							"username": username,
+							"username": result.username,
+							"ra": result.ra,
+							"role": result.role,
+							"name": result.name
 						});
 					}).catch(function (err) {
 						return done(null, false);
