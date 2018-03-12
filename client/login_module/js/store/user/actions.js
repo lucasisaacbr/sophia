@@ -11,31 +11,10 @@
 						userObj[prop] = user[prop];
 					}
 				}
-
+				console.log(userObj);
 				context.commit("setActiveUser", userObj);
-				context.commit("utilities/manageLoadingTask", {
-					"id": "setActiveUser",
-					"message": "Loading user data",
-					"loading": false
-				}, {
-					"root": true
-				});
 			}).catch((err) => {
-				context.commit("utilities/manageLoadingTask", {
-					"id": "setActiveUser",
-					"message": "Loading user data",
-					"loading": false,
-					"error": true
-				}, {
-					"root": true
-				});
-				context.dispatch("utilities/openToaster",  {
-					"toastType": "error",
-					"title": "Error loading active user data",
-					"message": `Reason: ${err.message || err}`
-				}, {
-					"root": true
-				});
+				console.log(err);
 			});
 		}
 	};
