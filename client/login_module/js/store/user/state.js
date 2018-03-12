@@ -3,9 +3,8 @@
 
 	module.exports = {
 		"state": {
-			"rrmInfo": {
+			"useInfo": {
 				"firstName": "",
-				"picture": "",
 				"email": "",
 				"contexts": []
 			}
