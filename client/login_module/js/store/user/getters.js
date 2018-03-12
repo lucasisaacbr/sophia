@@ -3,7 +3,7 @@
 
 	module.exports = {
 		"getActiveUser": function (context) {
-			return context.state.rrmInfo;
+			return context.state.userInfo;
 		}
 	};
 
