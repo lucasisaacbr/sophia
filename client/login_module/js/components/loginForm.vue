@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p v-if="confirmEmail"><strong>Email: </strong> {{ email }} </p>
+        <p v-if="confirmEmail"><strong>Email: </strong> {{ credentials.email }} </p>
         <div v-if="!confirmEmail" class="form-input">
             <div class="helper-txt">
                 <span>Entre com seu email</span>
@@ -16,7 +16,7 @@
             <div class="helper-txt">
                 <span>Senha</span>
             </div>
-            <input type="password" class="form-field" />
+            <input @keyup.entenr="login" type="password" class="form-field" v-model="credentials.password"/>
             <div class="btn-cotainer">
                 <button @click="login">Enviar</button>
             </div>
@@ -35,21 +35,24 @@
             "data": function () {
                 return {
                 	"inputEmail": "",
-                	"email": "",
+                	"credentials": {
+                		"email": "",
+                        "password": ""
+                    },
                     "confirmEmail": false
                 }
 			},
             "methods": {
 
         		"setEmail": function () {
-        			this.email = this.inputEmail;
+        			this.credentials.email = this.inputEmail;
                     this.toggleEmail();
 				},
                 "toggleEmail": function () {
                     this.confirmEmail = !this.confirmEmail;
 				},
                 "login": function () {
-
+                    require("../factory/factory").login(this.credentials.email, this.credentials.password);
 				}
             }
         }
