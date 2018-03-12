@@ -18,7 +18,7 @@
 			function (username, password, done) {
 				cloudantFactory.get("usuario", {
 					"selector": {
-						"user": {
+						"username": {
 							"$eq": username
 						}
 					},
@@ -30,7 +30,7 @@
 					const result = data.docs[0];
 					localConfigs.validateHash(password, result.password).then(function (validUser) {
 						return done (null, {
-							"username": result.username,
+							"email": result.username,
 							"ra": result.ra,
 							"role": result.role,
 							"name": result.name
