@@ -51,7 +51,7 @@
 						if (err) {
 							reject(err);
 						}
-						resolve(["Document:", docId, "from:", collectionName, "deleted successfully"].join(" "));
+						resolve(["Document:", docId, "from:", collection, "deleted successfully"].join(" "));
 					});
 				});
 			},
