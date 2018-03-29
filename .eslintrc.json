@@ -12,7 +12,7 @@
     "ecmaVersion": 2017
   },
   "rules": {
-    "quotes": ["error", "double"],
+    "quotes": ["warn", "double"],
     "no-console": "warn",
     "no-alert": "warn",
     "no-confusing-arrow": "error",
@@ -33,6 +33,7 @@
       "before": true,
       "after": true
     }],
-    "guard-for-in": "error"
+    "guard-for-in": "error",
+    "complexity": ["error", 7]
   }
 }
