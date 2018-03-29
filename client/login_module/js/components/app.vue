@@ -2,7 +2,7 @@
     <div id="app">
         <div id="body-left">
             <div>
-                <img src="../../../shared_module/img/Cloud.svg" />
+                <img src="../../../etc/img/Cloud.svg" />
             </div>
         </div>
         <div id="body-right">
@@ -23,22 +23,18 @@
 <script>
 	(function () {
 		"use strict";
-
 		module.exports = {
 			"props": [],
 			"name": "LoginModule",
 			"components": {
-				"loginForm": require("../components/loginForm.vue")
+				"loginForm": require("./loginForm.vue")
 			},
 			"data": function () {
 				return {
-                    "view": "login"
+
 				}
 			},
 			"methods": {
-                "changeView": function (view) {
-                    this.view = view;
-				}
 			}
 		};
 
@@ -50,7 +46,11 @@
         display: flex;
         height: 100%;
         width: 100%;
-        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    #app-name h1{
+        font-size: 2em;
+        padding-bottom: 30px;
     }
 
     #body-left {
@@ -80,6 +80,24 @@
         display: flex;
         flex-flow: column;
         align-items: center;
+    }
+
+    @media screen and (max-width: 650px) {
+        #app {
+            flex-direction: column;
+        }
+
+        #body-left {
+            width: 100%;
+        }
+
+        #body-right {
+            width: 100%;
+        }
+
+        img {
+            height: 250px;
+        }
     }
 
 
