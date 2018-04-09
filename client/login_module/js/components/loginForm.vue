@@ -42,7 +42,6 @@
         "use strict";
 
         let factory = require("../factory/factory");
-        console.log(factory);
 
         module.exports = {
         	"props": [],
