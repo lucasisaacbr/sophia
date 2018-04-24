@@ -21,6 +21,7 @@
 						"query": params.query,
 						"projection": params.projection || null
 					}).then(user => {
+						console.log("USER", user);
 						return (params.strict && !user ?
 								reject(createError(404, `User: ${params.query.username} not found`)) :
 								resolve(user)

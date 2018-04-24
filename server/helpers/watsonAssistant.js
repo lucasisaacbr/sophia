@@ -28,7 +28,7 @@
 						"username": credentials.username,
 						"password": credentials.password,
 						"url": serviceUrl,
-						"version_date": versionDate
+						"version": versionDate
 					}));
 				});
 			});

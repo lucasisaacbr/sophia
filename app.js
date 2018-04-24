@@ -35,6 +35,7 @@
 
 
 	// Conversation
+	const watsonAssistant = require("./server/helpers/watsonAssistant");
 	// const conversationConfig = require("./server/configs/conversation");
 
 	app.use(helmet());
@@ -75,7 +76,10 @@
 		mongoDB.connect().then(() => {
 			console.log("MongoDB connected");
 			require("./server/helpers/passport")(passport, userModel);
-			require("./server/routes/index")(app, passport);
+			require("./server/routes/index")(app, passport, watsonAssistant);
+			require("./server/helpers/security").generateHash("test123").then(data => {
+				console.log(data);
+			})
 		});
 
 

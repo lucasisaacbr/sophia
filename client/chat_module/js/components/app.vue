@@ -29,16 +29,22 @@
 		let factory = require("../factory/factory");
 
 		module.exports = {
+
+			"name": "MessageModule",
 			"data": function () {
 				return {
 					"message": ""
 				}
 			},
 			"methods": {
-				"send": () => {
+				"send": function() {
+
+					let msg = `<span> oi </span>`;
+
 					factory.sendMessage(this.message)
 						.then(response => {
                             // Treat chat response
+                            console.log(response);
 						})
                         .catch(err => console.error(err));
 				}

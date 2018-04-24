@@ -42,7 +42,6 @@
         "use strict";
 
         let factory = require("../factory/factory");
-
         module.exports = {
         	"props": [],
             "name": "LoginForm",
