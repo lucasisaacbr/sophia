@@ -77,9 +77,6 @@
 			console.log("MongoDB connected");
 			require("./server/helpers/passport")(passport, userModel);
 			require("./server/routes/index")(app, passport, watsonAssistant);
-			require("./server/helpers/security").generateHash("test123").then(data => {
-				console.log(data);
-			})
 		});
 
 
