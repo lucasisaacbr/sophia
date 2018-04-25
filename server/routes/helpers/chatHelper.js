@@ -26,7 +26,6 @@
 
 			watsonAssistant.sendMessage(credentials, payload)
 				.then(response => {
-					console.log(response);
 					return res.status(200).send(response);
 				})
 				.catch(err => res.status(500).send(err));
