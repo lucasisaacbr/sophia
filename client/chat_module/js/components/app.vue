@@ -6,7 +6,9 @@
         <div class="sh-messages">
             <ul id="msg-container">
                 <li v-for="msg in messages" class="msg-lines">
-                    <span :class="[{userMsg: msg.user}, {watsonMsg: !msg.user}]">{{ msg.text }}</span>
+                    <span :class="[{userMsg: msg.user}, {watsonMsg: !msg.user}]">
+                        {{ msg.text }}
+                    </span>
                 </li>
                 <li class="feedback" v-if="endOfFlow">
                     <span class="feedback-text"> Sua solicitação foi atendida ? </span>
@@ -29,11 +31,13 @@
             <div class="field has-addons msg-input">
                 <div class="control input-container">
                     <input class="input" type="text" placeholder="Digite sua menssagem..." v-model="message"
-                           @keydown.enter="send" :disabled="endOfFlow">
+                           @keydown.enter="send" :disabled="endOfFlow" ref="chat">
                 </div>
                 <div class="control">
                     <a class="button is-info" @click="send" :disabled="endOfFlow">
-                        Enviar
+                        <font-awesome-icon
+                                :icon="paperPlane">
+                        </font-awesome-icon>
                     </a>
                 </div>
             </div>
@@ -113,6 +117,9 @@
 				},
                 thumbsDown() {
 					return require("@fortawesome/fontawesome-free-solid/faThumbsDown");
+                },
+                paperPlane() {
+					return require("@fortawesome/fontawesome-free-solid/faPaperPlane");
                 }
 			},
 			"mounted": function () {
@@ -124,6 +131,7 @@
 								"user": false,
 								"text": txt
 							});
+							this.$refs.chat.focus();
 						});
 					})
 					.catch(err => console.error(err));
@@ -249,8 +257,5 @@
     #feedback-negative:hover {
         color: rgba(0, 0, 0, 0.4);
     }
-
-
-
 
 </style>
