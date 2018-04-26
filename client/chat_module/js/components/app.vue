@@ -16,7 +16,7 @@
                                     :icon="thumbsUp">
                             </font-awesome-icon>
                         </a>
-                       <a class="feedback-icon" id="feedback-negative">
+                       <a class="feedback-icon" id="feedback-negative" @click="sendNegativeFeedback">
                            <font-awesome-icon
                                    :icon="thumbsDown">
                            </font-awesome-icon>
@@ -86,12 +86,13 @@
                                     this.endOfFlow = true;
                                 }
 
-                                this.lastResponseObject = {
-                                	"user": "",
-                                	"intents": response.intents,
-                                    "entities": reponse.entities,
-                                    "input": response.input,
-                                }
+								this.lastResponseObject = {
+									"user": "",
+									"intents": response.intents,
+									"entities": response.entities,
+									"input": response.input,
+								};
+
 							})
 							.catch(err => console.error(err));
 					}
@@ -99,6 +100,11 @@
 				},
                 "sendNegativeFeedback": function () {
 
+					factory.insertFeedback(this.lastResponseObject)
+                        .then(()=> console.log("feedback saved"))
+						.catch(err => console.error(err));
+
+					this.endOfFlow = false;
 				}
 			},
             "computed": {
