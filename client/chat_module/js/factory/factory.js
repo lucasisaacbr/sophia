@@ -16,6 +16,25 @@
 					return reject(err)
 				})
 			});
+		},
+		"getFeedbacks": function () {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/getAllFeedbacks")
+					.then(function (data) {
+						return resolve(data);
+					})
+					.catch(err => reject(err));
+			})
+		},
+		"insertFeedback": function (fbObj) {
+			return new Promise((resolve, reject) => {
+
+				httpClient.post("/insertFeedback", {"lastResponseObject": fbObj})
+					.then((data) => {
+						resolve(data);
+					})
+					.catch(err => reject(err));
+			});
 		}
 	}
 
