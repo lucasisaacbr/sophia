@@ -28,8 +28,7 @@
 		},
 		"insertFeedback": function (fbObj) {
 			return new Promise((resolve, reject) => {
-
-				httpClient.post("/insertFeedback", {"lastResponseObject": fbObj})
+				httpClient.post("/insertFeedback", {"fbObj": fbObj})
 					.then((data) => {
 						resolve(data);
 					})
