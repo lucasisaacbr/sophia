@@ -32,6 +32,7 @@
 	// MongoDB
 	const mongoDB = new require("./server/helpers/mongo");
 	const userModel = require("./server/helpers/userModel")(mongoDB);
+	const feedbackModel = require("./server/helpers/feedbackModel")(mongoDB);
 
 
 	// Conversation
@@ -76,7 +77,7 @@
 		mongoDB.connect().then(() => {
 			console.log("MongoDB connected");
 			require("./server/helpers/passport")(passport, userModel);
-			require("./server/routes/index")(app, passport, watsonAssistant);
+			require("./server/routes/index")(app, passport, watsonAssistant, feedbackModel);
 		});
 
 
