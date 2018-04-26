@@ -8,7 +8,6 @@
 
 		 	feedbackModel.insertFeedback(feedbackObject)
 				.then((mongoResponse) => {
-					console.log(mongoResponse);
 					res.status(200).send(mongoResponse);
 				})
 				.catch(mongoError => res.status(500).send(mongoError));
