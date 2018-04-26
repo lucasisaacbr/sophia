@@ -14,7 +14,7 @@
 		return {
 			"insertFeedback": function (doc) {
 				return new Promise( (resolve, reject) => {
-					if (!params) {
+					if (!doc) {
 						return reject(createError(400, "Any parameter are received to run the query"));
 					}
 					mongoDB.insertOne(FEEDBACK_COLLECTION_NAME, doc, "test").then(feedBack => {
