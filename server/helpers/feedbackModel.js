@@ -17,17 +17,17 @@
 					if (!doc) {
 						return reject(createError(400, "Any parameter are received to run the query"));
 					}
-					mongoDB.insertOne(FEEDBACK_COLLECTION_NAME, doc, "test").then(feedBack => {
-						return feedBack ? reject(createError(404, `Feedback couldnt be inserted`)) : resolve(feedBack);
-
-					}).catch(err => reject(err));
+					mongoDB.insertOne(FEEDBACK_COLLECTION_NAME, doc).then(feedBack => {
+						return feedBack ? resolve(feedBack) : reject(createError(404, `Feedback couldnt be inserted`));
+					}).catch((err) => {
+						console.log("ERROR", err)
+					});
 				});
 			},
 			"getAll": function () {
 				return new Promise((resolve, reject) => {
 					mongoDB.find(FEEDBACK_COLLECTION_NAME, "test")
 						.then(allFeedbacks => {
-							console.log("here", allFeedbacks);
 						return resolve(allFeedbacks);
 					}).catch(err => reject(err));
 				});
