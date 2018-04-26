@@ -13,7 +13,7 @@
 
 		return {
 			"queryUser": function (params = {}) {
-				return new Promise( (resolve, reject) => {
+				return new Promise((resolve, reject) => {
 					if (!params) {
 						return reject(createError(400, "Any parameter are received to run the query"));
 					}

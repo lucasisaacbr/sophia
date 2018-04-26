@@ -13,12 +13,12 @@
 
 		return {
 			"insertFeedback": function (doc) {
-				return new Promise( (resolve, reject) => {
+				return new Promise((resolve, reject) => {
 					if (!doc) {
 						return reject(createError(400, "Any parameter are received to run the query"));
 					}
 					mongoDB.insertOne(FEEDBACK_COLLECTION_NAME, doc).then(feedBack => {
-						return feedBack ? resolve(feedBack) : reject(createError(404, `Feedback couldnt be inserted`));
+						return feedBack ? resolve(feedBack) : reject(createError(404, "Feedback couldnt be inserted"));
 					}).catch((err) => {
 						console.log("ERROR", err)
 					});
@@ -28,8 +28,8 @@
 				return new Promise((resolve, reject) => {
 					mongoDB.find(FEEDBACK_COLLECTION_NAME, "test")
 						.then(allFeedbacks => {
-						return resolve(allFeedbacks);
-					}).catch(err => reject(err));
+							return resolve(allFeedbacks);
+						}).catch(err => reject(err));
 				});
 			}
 		}
