@@ -4,7 +4,7 @@
 	 module.exports = function (app, feedbackModel) {
 
 	 	app.post("/insertFeedback", (req, res) => {
-		 	let feedbackObject = req.body.lastResponseObject;
+		 	let feedbackObject = req.body.fbObj;
 
 		 	feedbackModel.insertFeedback(feedbackObject)
 				.then((mongoResponse) => {
