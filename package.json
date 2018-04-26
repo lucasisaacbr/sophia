@@ -20,6 +20,9 @@
   "author": "Lucas Isaac",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.5",
+    "@fortawesome/fontawesome-free-solid": "^5.0.10",
+    "@fortawesome/vue-fontawesome": "0.0.22",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "cfenv": "^1.0.4",
