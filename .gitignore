@@ -3,3 +3,6 @@ node_modules/
 .idea/
 /client/*/dist/
 package-lock.json
+.DS_Store
+client/.DS_Store
+client/chat_module/.DS_Store
