@@ -1,8 +1,7 @@
 <template>
     <div>
 
-        <transition enter-active-class="animated fadeInDown"
-                    leave-active-class="animated fadeOutUp">
+        <transition name="fade">
             <span v-if="loginFail" id="alert-message"> Username or password invalid !</span>
         </transition>
         <p v-if="confirmEmail"><strong>Email: </strong> {{ credentials.email }} </p>
@@ -128,6 +127,13 @@
 
     #alert-message {
         color: #8b0c11;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+        opacity: 0;
     }
 
 
