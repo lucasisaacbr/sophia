@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <header class="sh-head">
-
         </header>
         <div class="sh-messages">
             <ul id="msg-container">
@@ -10,21 +9,23 @@
                         {{ msg.text }}
                     </span>
                 </li>
-                <li class="feedback" v-if="endOfFlow">
-                    <span class="feedback-text"> Sua solicitação foi atendida ? </span>
-                    <div class="feedback-icons">
-                        <a class="feedback-icon" id="feedback-positive">
-                            <font-awesome-icon
-                                    :icon="thumbsUp">
-                            </font-awesome-icon>
-                        </a>
-                       <a class="feedback-icon" id="feedback-negative" @click="sendNegativeFeedback">
-                           <font-awesome-icon
-                                   :icon="thumbsDown">
-                           </font-awesome-icon>
-                       </a>
-                    </div>
-                </li>
+                <transition name="fade">
+                    <li class="feedback" v-if="endOfFlow">
+                        <span class="feedback-text"> Sua solicitação foi atendida ? </span>
+                        <div class="feedback-icons">
+                            <a class="feedback-icon" id="feedback-positive" @click="sendPositiveFeedback">
+                                <font-awesome-icon
+                                        :icon="thumbsUp">
+                                </font-awesome-icon>
+                            </a>
+                           <a class="feedback-icon" id="feedback-negative" @click="sendNegativeFeedback">
+                               <font-awesome-icon
+                                       :icon="thumbsDown">
+                               </font-awesome-icon>
+                           </a>
+                        </div>
+                    </li>
+                </transition>
             </ul>
         </div>
         <footer class="sh-chat">
@@ -104,11 +105,31 @@
 				},
                 "sendNegativeFeedback": function () {
 
+					this.lastResponseObject.positive = false;
+
 					factory.insertFeedback(this.lastResponseObject)
-                        .then(()=> console.log("feedback saved"))
+                        .then(()=> {
+							this.messages.push({
+								"user": false,
+								"text": "Obrigado pelo seu feedback!"
+							});
+							this.endOfFlow = false;
+						})
 						.catch(err => console.error(err));
 
-					this.endOfFlow = false;
+				},
+                "sendPositiveFeedback": function () {
+
+					this.lastResponseObject.positive = true;
+					factory.insertFeedback(this.lastResponseObject)
+						.then(()=> {
+							this.messages.push({
+								"user": false,
+								"text": "Obrigado pelo seu feedback! Até a próxima !"
+							});
+							this.endOfFlow = false;
+						})
+						.catch(err => console.error(err));
 				}
 			},
             "computed": {
@@ -256,6 +277,13 @@
 
     #feedback-negative:hover {
         color: rgba(0, 0, 0, 0.4);
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+        opacity: 0;
     }
 
 </style>
