@@ -31,6 +31,30 @@
 							return resolve(allFeedbacks);
 						}).catch(err => reject(err));
 				});
+			},
+			"getPositive": function () {
+				return new Promise((resolve, reject) => {
+					mongoDB.find(FEEDBACK_COLLECTION_NAME, {
+						"query": {
+							"postive": true
+						}
+					},"test")
+						.then(positiveFB => {
+							return resolve(positiveFB);
+						}).catch(err => reject(err));
+				});
+			},
+			"getNegative": function () {
+				return new Promise((resolve, reject) => {
+					mongoDB.find(FEEDBACK_COLLECTION_NAME, {
+						"query": {
+							"postive": false
+						}
+					},"test")
+						.then(negativeFB => {
+							return resolve(negativeFB);
+						}).catch(err => reject(err));
+				});
 			}
 		}
 	}

@@ -21,24 +21,24 @@
 </template>
 
 <script>
-	(function () {
-		"use strict";
-		module.exports = {
-			"props": [],
-			"name": "LoginModule",
-			"components": {
-				"loginForm": require("./loginForm.vue")
-			},
-			"data": function () {
-				return {
+(function () {
+    "use strict";
+    module.exports = {
+        "props": [],
+        "name": "LoginModule",
+        "components": {
+            "loginForm": require("./loginForm.vue")
+        },
+        "data": function () {
+            return {
 
-				}
-			},
-			"methods": {
-			}
-		};
+            }
+        },
+        "methods": {
+        }
+    };
 
-	}());
+}());
 </script>
 
 <style>
