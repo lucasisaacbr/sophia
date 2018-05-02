@@ -3,6 +3,7 @@
         <header class="sh-head"></header>
         <div class="sh-container">
             <side-options></side-options>
+            <div></div>
         </div>
     </div>
 </template>
@@ -18,13 +19,16 @@
         },
         "data": function () {
             return {
-
+                data: {}
             }
         },
         "methods": {
 
+        },
+        "computed": {
+        	// "feedbacks": this.$store.state.feedbacks
         }
-    };
+    }
 
 }());
 </script>
