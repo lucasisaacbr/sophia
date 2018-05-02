@@ -36,20 +36,23 @@
 <script>
 (function () {
     "use strict";
-    module.exports = {
+
+	module.exports = {
         "props": [],
         "name": "SideOptions",
         "components": {
         },
         "data": function () {
             return {
-
             }
         },
         "methods": {
 
+        },
+        "beforeCreate": function () {
+            this.$store.dispatch("feedbacks/positiveFB");
         }
-    };
+    }
 
 }());
 </script>
