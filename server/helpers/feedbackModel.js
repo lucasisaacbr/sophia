@@ -26,7 +26,7 @@
 			},
 			"getAll": function () {
 				return new Promise((resolve, reject) => {
-					mongoDB.find(FEEDBACK_COLLECTION_NAME, "test")
+					mongoDB.find(FEEDBACK_COLLECTION_NAME)
 						.then(allFeedbacks => {
 							return resolve(allFeedbacks);
 						}).catch(err => reject(err));
@@ -36,9 +36,9 @@
 				return new Promise((resolve, reject) => {
 					mongoDB.find(FEEDBACK_COLLECTION_NAME, {
 						"query": {
-							"postive": true
+							"positive": true
 						}
-					},"test")
+					})
 						.then(positiveFB => {
 							return resolve(positiveFB);
 						}).catch(err => reject(err));
@@ -48,9 +48,9 @@
 				return new Promise((resolve, reject) => {
 					mongoDB.find(FEEDBACK_COLLECTION_NAME, {
 						"query": {
-							"postive": false
+							"positive": false
 						}
-					},"test")
+					})
 						.then(negativeFB => {
 							return resolve(negativeFB);
 						}).catch(err => reject(err));

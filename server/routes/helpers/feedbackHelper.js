@@ -20,6 +20,20 @@
 				}).catch(mongoError => res.status(500).send(mongoError));
 
 		});
+
+		app.post("/getPositivesFB", (req, res) => {
+			feedbackModel.getPositive()
+				.then((mongoResponse) => {
+					res.status(200).send(mongoResponse);
+				}).catch(mongoError => res.status(500).send(mongoError));
+		});
+
+		app.post("/getNegativesFB", (req, res) => {
+			feedbackModel.getNegative()
+				.then((mongoResponse) => {
+					res.status(200).send(mongoResponse);
+				}).catch(mongoError => res.status(500).send(mongoError));
+		});
 	}
 
 }());
