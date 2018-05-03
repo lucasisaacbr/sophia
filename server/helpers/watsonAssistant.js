@@ -421,7 +421,7 @@
 				return this.authenticate(
 					credentials
 				).then(instance => {
-					instance.listValues(payload, (err, response) => {
+					instance.listEntities(payload, (err, response) => {
 						if (err) {
 							reject(createError(500, "The entities could not be listed"));
 						} else {
