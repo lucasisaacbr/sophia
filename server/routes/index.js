@@ -12,10 +12,8 @@
 		require("./helpers/chatHelper")(app, ensureAuthenticated, watsonAssistant);
 		require("./helpers/feedbackHelper")(app, feedbackModel);
 		require("./helpers/dashboardHelper")(app);
+		require("./helpers/watsonHelper")(app, watsonAssistant);
 
-		app.get("/teste", ensureAuthenticated, function (req, res) {
-			res.status(200).send("Logado");
-		})
 	}
 
 }());
