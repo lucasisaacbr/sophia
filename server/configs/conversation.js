@@ -9,6 +9,6 @@
 		password: pass,
 		version: "v1",
 		version_date: "2017-05-26",
-		workspace_id: process.env.CONV_WORKSPACE
+		workspace_id: process.env.ASSISTANT_WORKSPACE
 	}
 }());
