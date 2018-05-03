@@ -53,6 +53,26 @@
 					.catch(err => reject(err));
 			})
 		},
+
+		"getEntities": function () {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/getEntities")
+					.then(function (data) {
+						return resolve(data)
+					})
+					.catch(err => reject(err))
+			});
+		},
+
+		"getIntents": function () {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/getIntents")
+					.then(function (data) {
+						return resolve(data)
+					})
+					.catch(err => reject(err));
+			})
+		}
 	}
 
 }());
