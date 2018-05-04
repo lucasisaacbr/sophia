@@ -4,22 +4,22 @@
             Feedbacks
         </p>
         <ul class="menu-list">
-            <li><a class="is-active">Positivos</a></li>
-            <li><a>Negativos</a></li>
+            <li><a class="is-active" @click="negatives">Negativos</a></li>
+            <li><a @click="positives">Positivos</a></li>
         </ul>
         <p class="menu-label">
             Intenções
         </p>
         <ul class="menu-list">
-            <li><a>Listar Intenções</a></li>
-            <li><a>Adicionar Exemplos</a></li>
+            <li><a @click="listIntents">Listar Intenções</a></li>
+            <li><a @click="">Adicionar Exemplos</a></li>
             <li><a>Adicionar Contra-exemplos</a></li>
         </ul>
         <p class="menu-label">
             Entidades
         </p>
         <ul class="menu-list">
-            <li><a>Listar Entidades</a></li>
+            <li><a @click="listEntities">Listar Entidades</a></li>
             <li><a>Adicionar Valores</a></li>
             <li><a>Adicionar Synonimos</a></li>
         </ul>
@@ -44,13 +44,22 @@
         },
         "data": function () {
             return {
+
             }
         },
         "methods": {
-
-        },
-        "beforeCreate": function () {
-            this.$store.dispatch("feedbacks/positiveFB");
+            negatives() {
+            	this.$store.dispatch("feedbacks/negativeFB").then(() => this.$store.commit("feedbacks/view", "negative"));
+            },
+            positives() {
+				this.$store.dispatch("feedbacks/positiveFB").then(() => this.$store.commit("feedbacks/view", "positive"));
+            },
+            listIntents() {
+				this.$store.dispatch("feedbacks/intents").then(() => this.$store.commit("feedbacks/view", "intent"));
+			},
+            listEntities() {
+				this.$store.dispatch("feedbacks/entities").then(() => this.$store.commit("feedbacks/view", "entity"));
+            }
         }
     }
 
@@ -62,7 +71,6 @@
         max-width: 25%;
         min-width: 210px;
         flex-grow: 1;
-        background: papayawhip;
         padding: 7px;
     }
 </style>
