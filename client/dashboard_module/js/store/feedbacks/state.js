@@ -6,7 +6,8 @@
 			"positiveFB": [],
 			"negativeFB": [],
 			"entities": [],
-			"intents": []
+			"intents": [],
+			"view": "negative"
 		}
 	};
 }());

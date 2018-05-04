@@ -13,6 +13,9 @@
 		},
 		"getEntities": function (context) {
 			return context.state.entities;
+		},
+		"getView": function (context) {
+			return context.state.view;
 		}
 	};
 

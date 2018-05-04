@@ -13,6 +13,9 @@
 		},
 		"intents": function (context, itt) {
 			context.state.intents = itt;
+		},
+		"changeView": function (context, newView) {
+			context.state.view =  newView;
 		}
 	}
 

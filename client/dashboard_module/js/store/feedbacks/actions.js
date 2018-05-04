@@ -15,11 +15,10 @@
 			}).catch(err => console.error(err));
 
 		},
-
 		"negativeFB": function (context) {
-			getNegativeFB().then((fb => {
+			getNegativeFB().then(fb => {
 				context.commit("negativeFB", fb);
-			}).catch(err => console.error(err)));
+			}).catch(err => console.error(err));
 		},
 		"entities": function (context) {
 			getEntities().then(entities => {
@@ -31,7 +30,6 @@
 				context.commit("intents", intents);
 			}).catch(err => console.error(err));
 		}
-
 	};
 
 }());
