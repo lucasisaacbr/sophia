@@ -3,7 +3,11 @@
         <header class="sh-head"></header>
         <div class="sh-container">
             <side-options></side-options>
-            <div></div>
+            <div>
+                <div v-for="x in getNegatives">
+                    <div>{{x}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -11,6 +15,7 @@
 <script>
 (function () {
     "use strict";
+
     module.exports = {
         "props": [],
         "name": "DashbordModule",
@@ -19,15 +24,21 @@
         },
         "data": function () {
             return {
-                data: {}
+                "positives": [],
+                "negatives": []
             }
         },
         "methods": {
 
         },
         "computed": {
-        	// "feedbacks": this.$store.state.feedbacks
-        }
+            getNegatives() {
+            	return this.$store.getters["feedbacks/getNegatives"];
+            }
+        },
+		"beforeCreate": function () {
+            this.$store.dispatch("feedbacks/negativeFB");
+		}
     }
 
 }());
