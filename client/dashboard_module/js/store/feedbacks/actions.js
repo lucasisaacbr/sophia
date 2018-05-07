@@ -6,14 +6,12 @@
 	const getEntities = require("../../factory/factory").getEntities;
 	const getIntents = require("../../factory/factory").getIntents;
 
-
 	module.exports = {
 
 		"positiveFB": function (context) {
 			getPositiveFB().then((fb) => {
 				context.commit("positiveFB", fb);
 			}).catch(err => console.error(err));
-
 		},
 		"negativeFB": function (context) {
 			getNegativeFB().then(fb => {
