@@ -96,6 +96,8 @@
 									"intents": response.intents,
 									"entities": response.entities,
 									"input": response.input,
+                                    "output": response.output.text,
+                                    "date": new Date()
 								};
 
 							})
