@@ -49,16 +49,16 @@
         },
         "methods": {
             negatives() {
-            	this.$store.dispatch("feedbacks/negativeFB").then(() => this.$store.commit("feedbacks/view", "negative"));
+            	this.$store.dispatch("feedbacks/negativeFB").then(() => this.$store.commit("feedbacks/changeView", "negative"));
             },
             positives() {
-				this.$store.dispatch("feedbacks/positiveFB").then(() => this.$store.commit("feedbacks/view", "positive"));
+				this.$store.dispatch("feedbacks/positiveFB").then(() => this.$store.commit("feedbacks/changeView", "positive"));
             },
             listIntents() {
-				this.$store.dispatch("feedbacks/intents").then(() => this.$store.commit("feedbacks/view", "intent"));
+				this.$store.dispatch("feedbacks/intents").then(() => this.$store.commit("feedbacks/changeView", "intent"));
 			},
             listEntities() {
-				this.$store.dispatch("feedbacks/entities").then(() => this.$store.commit("feedbacks/view", "entity"));
+				this.$store.dispatch("feedbacks/entities").then(() => this.$store.commit("feedbacks/changeView", "entity"));
             }
         }
     }
