@@ -3,11 +3,7 @@
         <header class="sh-head"></header>
         <div class="sh-container">
             <side-options></side-options>
-            <div>
-                <div v-for="x in getNegatives">
-                    <div>{{x}}</div>
-                </div>
-            </div>
+            <main-content></main-content>
         </div>
     </div>
 </template>
@@ -20,7 +16,8 @@
         "props": [],
         "name": "DashbordModule",
         "components": {
-            "sideOptions": require("./sideOptions.vue")
+            "sideOptions": require("./sideOptions.vue"),
+            "mainContent": require("./mainContent.vue"),
         },
         "data": function () {
             return {
@@ -32,12 +29,10 @@
 
         },
         "computed": {
-            getNegatives() {
-            	return this.$store.getters["feedbacks/getNegatives"];
-            }
+
         },
 		"beforeCreate": function () {
-            this.$store.dispatch("feedbacks/negativeFB");
+
 		}
     }
 
