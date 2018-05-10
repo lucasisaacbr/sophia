@@ -69,7 +69,7 @@
                 "login": function () {
         			this.isLoading = true;
         			factory.login(this.credentials.email, this.credentials.password).then(x => {
-        				console.log("RESPONSE, x");
+        				this.$store.dispatch("user/getUserName");
         				this.loginFail = false;
         				this.isLoading = false;
         				location.replace("/chat");

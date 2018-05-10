@@ -13,6 +13,7 @@
 	return new Vue({
 		"el": "#app",
 		"name": "ChatModule",
+		"store": require("store/store"),
 		"render": function (h) {
 			return h(require("./components/app.vue"));
 		}
