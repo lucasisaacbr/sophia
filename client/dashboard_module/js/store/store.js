@@ -5,7 +5,8 @@
 
 	module.exports = new Vuex.Store({
 		"modules": {
-			"feedbacks": require("./feedbacks/module")
+			"feedbacks": require("./feedbacks/module"),
+			"user": require("./user/module")
 		},
 		"strict": process.env.NODE_ENV !== "production"
 	});
