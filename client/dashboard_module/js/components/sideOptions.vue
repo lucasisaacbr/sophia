@@ -4,30 +4,26 @@
             Feedbacks
         </p>
         <ul class="menu-list">
-            <li><a class="is-active" @click="negatives">Negativos</a></li>
-            <li><a @click="positives">Positivos</a></li>
+            <li><a :class="[getView === 'negative' ? 'is-active' : '']" @click="negatives">Negativos</a></li>
+            <li><a :class="[getView === 'positive' ? 'is-active' : '']" @click="positives">Positivos</a></li>
         </ul>
         <p class="menu-label">
             Intenções
         </p>
         <ul class="menu-list">
-            <li><a @click="listIntents">Listar Intenções</a></li>
-            <li><a @click="">Adicionar Exemplos</a></li>
-            <li><a>Adicionar Contra-exemplos</a></li>
+            <li><a :class="[getView === 'intent' ? 'is-active' : '']" @click="listIntents">Listar Intenções</a></li>
         </ul>
         <p class="menu-label">
             Entidades
         </p>
         <ul class="menu-list">
-            <li><a @click="listEntities">Listar Entidades</a></li>
-            <li><a>Adicionar Valores</a></li>
-            <li><a>Adicionar Synonimos</a></li>
+            <li><a :class="[getView === 'entity' ? 'is-active' : '']" @click="listEntities">Listar Entidades</a></li>
         </ul>
         <p class="menu-label">
             Metricas
         </p>
         <ul class="menu-list">
-            <li><a>Dashboard de Métricas</a></li>
+            <li><a :class="[getView === 'metric' ? 'is-active' : '']" @click="metricView">Dashboard de Métricas</a></li>
 
         </ul>
     </aside>
@@ -47,6 +43,11 @@
 
             }
         },
+        "computed": {
+        	getView() {
+        		return this.$store.getters["feedbacks/getView"]
+            }
+        },
         "methods": {
             negatives() {
             	this.$store.dispatch("feedbacks/negativeFB").then(() => this.$store.commit("feedbacks/changeView", "negative"));
@@ -59,6 +60,9 @@
 			},
             listEntities() {
 				this.$store.dispatch("feedbacks/entities").then(() => this.$store.commit("feedbacks/changeView", "entity"));
+            },
+            metricView() {
+            	this.$store.commit("feedbacks/changeView", "metric");
             }
         }
     }
