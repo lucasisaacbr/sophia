@@ -92,7 +92,7 @@
                                 }
 
 								this.lastResponseObject = {
-									"user": "",
+									"user": this.getUser,
 									"intents": response.intents,
 									"entities": response.entities,
 									"input": response.input,
@@ -143,6 +143,9 @@
                 },
                 paperPlane() {
 					return require("@fortawesome/fontawesome-free-solid/faPaperPlane");
+                },
+                getUser() {
+					return this.$store.getters["user/getUserName"]
                 }
 			},
 			"mounted": function () {
@@ -158,6 +161,9 @@
 						});
 					})
 					.catch(err => console.error(err));
+			},
+            "beforeCreate": function () {
+                this.$store.dispatch("user/getUserName");
 			}
 		}
 
