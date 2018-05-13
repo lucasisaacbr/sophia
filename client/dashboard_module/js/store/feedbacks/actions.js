@@ -5,6 +5,7 @@
 	const getNegativeFB = require("../../factory/factory").getNegativesFB;
 	const getEntities = require("../../factory/factory").getEntities;
 	const getIntents = require("../../factory/factory").getIntents;
+	const getExamples = require("../../factory/factory").listExamples;
 
 	module.exports = {
 
@@ -27,6 +28,11 @@
 			getIntents().then(intents => {
 				context.commit("intents", intents);
 			}).catch(err => console.error(err));
+		},
+		"examples": function (context, intent) {
+			getExamples(intent).then(examples => {
+				context.commit("examples", examples);
+			}).catch(err => console.log(err));
 		}
 	};
 

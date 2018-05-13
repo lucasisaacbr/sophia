@@ -1,7 +1,6 @@
 (function () {
 	"use strict";
 	const Vue = require("vue");
-	const ActiveUser = require("../../model/ActiveUser");
 
 	module.exports = {
 

@@ -16,6 +16,9 @@
 		},
 		"getView": function (context) {
 			return context.state.view;
+		},
+		"getExamples": function (context) {
+			return context.state.examples;
 		}
 	};
 
