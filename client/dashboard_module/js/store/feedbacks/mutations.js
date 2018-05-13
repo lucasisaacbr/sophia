@@ -16,6 +16,9 @@
 		},
 		"changeView": function (context, newView) {
 			context.state.view =  newView;
+		},
+		"examples": function (context, examples) {
+			context.state.examples = examples;
 		}
 	}
 

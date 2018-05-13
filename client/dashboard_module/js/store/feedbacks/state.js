@@ -7,6 +7,7 @@
 			"negativeFB": [],
 			"entities": [],
 			"intents": [],
+			"examples": [],
 			"view": "negative"
 		}
 	};

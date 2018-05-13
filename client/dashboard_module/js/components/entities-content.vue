@@ -24,7 +24,7 @@
 				}
 			},
 			"beforeCreate": function () {
-				this.$store.dispatch("feedbacks/getEntities");
+				this.$store.dispatch("feedbacks/entities");
 			}
 		}
 
