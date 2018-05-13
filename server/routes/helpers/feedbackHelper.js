@@ -1,9 +1,9 @@
 (function () {
 	"use strict";
 
-	module.exports = function (app, feedbackModel) {
+	module.exports = function (app, ensureAdmin, feedbackModel) {
 
-		app.post("/insertFeedback", (req, res) => {
+		app.post("/insertFeedback", ensureAdmin, (req, res) => {
 			let feedbackObject = req.body.fbObj;
 
 			feedbackModel.insertFeedback(feedbackObject)
@@ -13,7 +13,7 @@
 				.catch(mongoError => res.status(500).send(mongoError));
 		});
 
-		app.post("/getAllFeedbacks", (req, res) => {
+		app.post("/getAllFeedbacks", ensureAdmin, (req, res) => {
 			feedbackModel.getAll()
 				.then((mongoResponse) => {
 					res.status(200).send(mongoResponse);
@@ -21,14 +21,14 @@
 
 		});
 
-		app.post("/getPositivesFB", (req, res) => {
+		app.post("/getPositivesFB", ensureAdmin, (req, res) => {
 			feedbackModel.getPositive()
 				.then((mongoResponse) => {
 					res.status(200).send(mongoResponse);
 				}).catch(mongoError => res.status(500).send(mongoError));
 		});
 
-		app.post("/getNegativesFB", (req, res) => {
+		app.post("/getNegativesFB", ensureAdmin, (req, res) => {
 			feedbackModel.getNegative()
 				.then((mongoResponse) => {
 					res.status(200).send(mongoResponse);

@@ -981,7 +981,7 @@
 				).then(instance => {
 					instance.deleteExample(payload, (err, response) => {
 						if (err) {
-							reject(createError(500, "The example could not be deleted"));
+							reject(createError(500, err));
 						} else {
 							return resolve(response);
 						}
