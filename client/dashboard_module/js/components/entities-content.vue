@@ -140,7 +140,6 @@
 						.catch(err => console.log(err));
 				},
 				createEntity(entityName, entityValues) {
-					console.log("Values", entityValues);
 					factory.createEntity(entityName, entityValues)
 						.then(() => {
 							this.createEntityModal = false;

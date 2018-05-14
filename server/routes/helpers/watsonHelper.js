@@ -111,8 +111,6 @@
 				"entity": req.body.entityName,
 				"values": req.body.entityValues
 			};
-
-			console.log(payload)
 			watsonAssistant.createEntity(credentials, payload)
 				.then((result) => res.status(200).send(result))
 				.catch((error) => res.status(500).send(error));
