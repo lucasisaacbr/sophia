@@ -16,14 +16,18 @@
 			let payload = {
 				...params,
 				"export": true
-			}
+			};
 			watsonAssistant.listIntents(credentials, payload)
 				.then((intents) => res.status(200).send(intents))
 				.catch(err => res.status(500).send(err));
 		});
 
 		app.post("/getEntities", ensureAdmin, (req, res) => {
-			watsonAssistant.listEntities(credentials, params)
+			let payload = {
+				...params,
+				"export": true
+			};
+			watsonAssistant.listEntities(credentials, payload)
 				.then((intents) => res.status(200).send(intents))
 				.catch(err => res.status(500).send(err));
 		});
@@ -32,7 +36,7 @@
 			let payload = {
 				...params,
 				"intent": req.body.intentName
-			}
+			};
 			watsonAssistant.deleteIntent(credentials, payload)
 				.then((result) => res.status(200).send(result))
 				.catch((error) => res.status(500).send(error));
@@ -88,6 +92,30 @@
 			watsonAssistant.createIntent(credentials, payload)
 				.then(result => res.status(200).send(result))
 				.catch(error => res.status(500).send(error));
+		});
+
+
+		app.post("/deleteEntity", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"entity": req.body.entityName
+			};
+			watsonAssistant.deleteEntity(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
+
+		app.post("/createEntity", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"entity": req.body.entityName,
+				"values": req.body.entityValues
+			};
+
+			console.log(payload)
+			watsonAssistant.createEntity(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
 		});
 	}
 

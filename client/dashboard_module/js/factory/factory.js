@@ -92,6 +92,20 @@
 					.then(data => resolve(data))
 					.catch(err => reject(err));
 			})
+		},
+		"deleteEntity": function (entityName) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/deleteEntity", { "entityName": entityName} )
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			});
+		},
+		"createEntity": function (entityName, entityValues) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/createEntity", { "entityName": entityName, "entityValues": entityValues })
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			})
 		}
 	}
 

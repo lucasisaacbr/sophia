@@ -456,7 +456,7 @@
 				return this.authenticate(
 					credentials
 				).then(instance => {
-					instance.createValue(payload, (err, response) => {
+					instance.createEntity(payload, (err, response) => {
 						if (err) {
 							reject(createError(500, "The entities could not be created"));
 						} else {
@@ -496,7 +496,7 @@
 				return this.authenticate(
 					credentials
 				).then(instance => {
-					instance.deleteValue(payload, (err, response) => {
+					instance.deleteEntity(payload, (err, response) => {
 						if (err) {
 							reject(createError(500, "The entities could not be deleted"));
 						} else {
