@@ -105,7 +105,14 @@
 				httpClient.post("/createEntity", { "entityName": entityName, "entityValues": entityValues })
 					.then(data => resolve(data))
 					.catch(err => reject(err));
-			})
+			});
+		},
+		"createValue": function (entityName, newValue) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/createValue", { "entityName": entityName, "value": newValue})
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			});
 		}
 	}
 
