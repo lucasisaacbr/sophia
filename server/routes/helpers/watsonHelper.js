@@ -115,6 +115,17 @@
 				.then((result) => res.status(200).send(result))
 				.catch((error) => res.status(500).send(error));
 		});
+
+		app.post("/createValue", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"entity": req.body.entityName,
+				"value": req.body.value
+			};
+			watsonAssistant.createValues(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		})
 	}
 
 }());
