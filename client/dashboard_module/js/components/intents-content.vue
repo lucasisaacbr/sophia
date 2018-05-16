@@ -11,10 +11,12 @@
                 <div class="intent-card-content">
                     <div class="intent-name">
                         <h1><span class="intent-hash">#</span>{{ intent.intent }}
-                            <span class="intent-delete" @click="callDelete(intent.intent)">
-                                 <font-awesome-icon
-                                         :icon="trash">
-                                </font-awesome-icon>
+                            <span class="intent-delete">
+                                <a class="button is-danger is-small" @click="callDelete(intent.intent)">
+                                    <font-awesome-icon
+                                            :icon="trash">
+                                    </font-awesome-icon>
+                                </a>
                             </span>
                         </h1>
                     </div>
