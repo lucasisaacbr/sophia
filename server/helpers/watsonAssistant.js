@@ -958,6 +958,24 @@
 				});
 			});
 		},
+		"createValues": function (credentials = {}, payload = {}) {
+			return new Promise((resolve, reject) => {
+				if (!credentials.username || !credentials.password) {
+					return reject(createError(400, "Can not proceed without username and password"));
+				}
+				return this.authenticate(credentials)
+					.then(instance => {
+						instance.createValue(payload, (err, response) => {
+							if (err) {
+								reject(createError(500), "The Value could not be created");
+							} else {
+								return resolve(response);
+							}
+						})
+					})
+			});
+		}
+		,
 		/**
 		 * Delete a user input example from an intent.
 		 * @param {object} credentials - Contains username and password.
