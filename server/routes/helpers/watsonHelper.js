@@ -109,7 +109,6 @@
 			let payload = {
 				...params,
 				"entity": req.body.entityName,
-				"values": req.body.entityValues
 			};
 			watsonAssistant.createEntity(credentials, payload)
 				.then((result) => res.status(200).send(result))
@@ -120,12 +119,51 @@
 			let payload = {
 				...params,
 				"entity": req.body.entityName,
-				"value": req.body.value
+				"value": req.body.value,
+				"synonyms": req.body.synonyms,
+				"type": "synonyms"
 			};
 			watsonAssistant.createValues(credentials, payload)
 				.then((result) => res.status(200).send(result))
 				.catch((error) => res.status(500).send(error));
-		})
+		});
+
+		app.post("/deleteSynonym", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"entity": req.body.entityName,
+				"value": req.body.value,
+				"synonym": req.body.synonym
+			};
+			watsonAssistant.deleteSynonym(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
+
+		app.post("/deleteValue", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"entity": req.body.entity,
+				"value": req.body.value
+			};
+
+			watsonAssistant.deleteValue(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
+
+		app.post("/addSynonym", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"entity": req.body.entity,
+				"value": req.body.value,
+				"synonym": req.body.synonym
+			};
+
+			watsonAssistant.createSynonym(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
 	}
 
 }());

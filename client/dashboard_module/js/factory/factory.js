@@ -100,19 +100,40 @@
 					.catch(err => reject(err));
 			});
 		},
-		"createEntity": function (entityName, entityValues) {
+		"createEntity": function (entityName) {
 			return new Promise((resolve, reject) => {
-				httpClient.post("/createEntity", { "entityName": entityName, "entityValues": entityValues })
+				httpClient.post("/createEntity", { "entityName": entityName })
 					.then(data => resolve(data))
 					.catch(err => reject(err));
 			});
 		},
-		"createValue": function (entityName, newValue) {
+		"createValue": function (entityName, newValue, newSynonyms) {
 			return new Promise((resolve, reject) => {
-				httpClient.post("/createValue", { "entityName": entityName, "value": newValue})
+				httpClient.post("/createValue", { "entityName": entityName, "value": newValue, "synonyms": newSynonyms})
 					.then(data => resolve(data))
 					.catch(err => reject(err));
 			});
+		},
+		"deleteSynonym": function (entityName, value, synonym) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/deleteSynonym", {"entityName": entityName, "value": value, "synonym": synonym})
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			});
+		},
+		"deleteValue": function (entity, value) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/deleteValue", {"entity": entity, "value": value})
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			})
+		},
+		"addSynonym": function (entity, value, synonym) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/addSynonym", { "entity": entity, "value": value, "synonym": synonym  })
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			})
 		}
 	}
 

@@ -46,6 +46,7 @@
         padding: 7px;
         background-color: #f5f5f5;
         border-left: 1px solid #CCC;
+        overflow: auto;
         width: 100%;
     }
 

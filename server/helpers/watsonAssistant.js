@@ -976,6 +976,7 @@
 			});
 		}
 		,
+
 		/**
 		 * Delete a user input example from an intent.
 		 * @param {object} credentials - Contains username and password.
@@ -1312,6 +1313,24 @@
 					instance.listAllLogs(payload, (err, response) => {
 						if (err) {
 							reject(createError(500, "The logs could not be loaded"));
+						} else {
+							return resolve(response);
+						}
+					});
+				});
+			});
+		},
+		"deleteValue": function (credentials = {}, payload = {}) {
+			return new Promise((resolve, reject) => {
+				if (!credentials.username || !credentials.password) {
+					return reject(createError(400, "Can not proceed without username and password"));
+				}
+				return this.authenticate(
+					credentials
+				).then(instance => {
+					instance.deleteValue(payload, (err, response) => {
+						if (err) {
+							reject(createError(500, "Value couldnt be deleted"));
 						} else {
 							return resolve(response);
 						}
