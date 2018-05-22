@@ -8,6 +8,7 @@
 			"entities": [],
 			"intents": [],
 			"examples": [],
+			"dialogNodes": [],
 			"view": "negative"
 		}
 	};

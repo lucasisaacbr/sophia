@@ -126,14 +126,21 @@
 				httpClient.post("/deleteValue", {"entity": entity, "value": value})
 					.then(data => resolve(data))
 					.catch(err => reject(err));
-			})
+			});
 		},
 		"addSynonym": function (entity, value, synonym) {
 			return new Promise((resolve, reject) => {
 				httpClient.post("/addSynonym", { "entity": entity, "value": value, "synonym": synonym  })
 					.then(data => resolve(data))
 					.catch(err => reject(err));
-			})
+			});
+		},
+		"listDialogNodes": function () {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/listDialogNodes")
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			});
 		}
 	}
 

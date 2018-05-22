@@ -164,6 +164,16 @@
 				.then((result) => res.status(200).send(result))
 				.catch((error) => res.status(500).send(error));
 		});
+
+		app.post("/listDialogNodes", ensureAdmin, (req, res) => {
+			let payload = {
+				...params
+			};
+
+			watsonAssistant.listDialogNodes(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
 	}
 
 }());

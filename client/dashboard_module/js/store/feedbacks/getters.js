@@ -19,6 +19,9 @@
 		},
 		"getExamples": function (context) {
 			return context.state.examples;
+		},
+		"getDialogNodes": function (context) {
+			return context.state.dialogNodes;
 		}
 	};
 
