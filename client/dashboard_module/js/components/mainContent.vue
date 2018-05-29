@@ -4,6 +4,7 @@
         <positive-content v-if="getView === 'positive'"></positive-content>
         <intents-content v-if="getView === 'intent'"></intents-content>
         <entities-content v-if="getView === 'entity'"></entities-content>
+        <dialog-content v-if="getView === 'dialog'"></dialog-content>
     </div>
 </template>
 
@@ -18,7 +19,8 @@
 			"negativeContent": require("./negative-content.vue"),
             "positiveContent": require("./positive-content.vue"),
             "intentsContent": require("./intents-content.vue"),
-            "entitiesContent": require("./entities-content.vue")
+            "entitiesContent": require("./entities-content.vue"),
+            "dialogContent": require("./dialog-content.vue")
 		},
         "data": function () {
             return {
@@ -46,6 +48,7 @@
         padding: 7px;
         background-color: #f5f5f5;
         border-left: 1px solid #CCC;
+        overflow: auto;
         width: 100%;
     }
 

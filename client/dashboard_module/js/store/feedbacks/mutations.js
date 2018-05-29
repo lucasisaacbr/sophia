@@ -19,6 +19,9 @@
 		},
 		"examples": function (context, examples) {
 			context.state.examples = examples;
+		},
+		"dialogNodes": function (context, dn) {
+			context.state.dialogNodes = dn;
 		}
 	}
 

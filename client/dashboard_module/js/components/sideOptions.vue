@@ -20,11 +20,10 @@
             <li><a :class="[getView === 'entity' ? 'is-active' : '']" @click="listEntities">Listar Entidades</a></li>
         </ul>
         <p class="menu-label">
-            Metricas
+            Conversação
         </p>
         <ul class="menu-list">
-            <li><a :class="[getView === 'metric' ? 'is-active' : '']" @click="metricView">Dashboard de Métricas</a></li>
-
+            <li><a :class="[getView === 'dialog' ? 'is-active' : '']" @click="dialogView">Nós de diálogo</a></li>
         </ul>
     </aside>
 </template>
@@ -61,8 +60,8 @@
             listEntities() {
 				this.$store.dispatch("feedbacks/entities").then(() => this.$store.commit("feedbacks/changeView", "entity"));
             },
-            metricView() {
-            	this.$store.commit("feedbacks/changeView", "metric");
+            dialogView() {
+            	this.$store.commit("feedbacks/changeView", "dialog");
             }
         }
     }
