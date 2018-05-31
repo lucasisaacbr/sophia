@@ -141,6 +141,22 @@
 					.then(data => resolve(data))
 					.catch(err => reject(err));
 			});
+		},
+
+		"deleteDialogNode": function (node_name) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/deleteNode", {"dialog_node": node_name})
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			});
+		},
+
+		"createDialogNode": function (dialog_node, conditions, nodeResponse, title) {
+			return new Promise((resolve, reject) => {
+				httpClient.post("/addDialogNode", {"dialog_node": dialog_node, "conditions": conditions, "nodeResponse": nodeResponse, "title": title})
+					.then(data => resolve(data))
+					.catch(err => reject(err));
+			});
 		}
 	}
 
