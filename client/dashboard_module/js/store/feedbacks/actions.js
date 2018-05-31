@@ -44,6 +44,24 @@
 			getDialogNodes()
 				.then(nodes => context.commit("dialogNodes", nodes))
 				.catch(err => console.log(err));
+		},
+		"formatedEntities": function (context) {
+			let ettArr = [];
+			getEntities()
+				.then(entities => {
+					entities.entities.forEach(ettObj => ettArr.push(ettObj.entity));
+					context.commit("entitiesArray", ettArr);
+				})
+				.catch(err => console.log(err));
+		},
+		"formatedIntents": function (context) {
+			let ittArr = [];
+			getIntents()
+				.then(intents => {
+					intents.intents.forEach(ittObj => ittArr.push(ittObj.intent));
+					context.commit("intentsArray", ittArr);
+				})
+				.catch(err => console.log(err));
 		}
 
 	};

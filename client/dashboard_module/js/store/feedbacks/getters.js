@@ -22,6 +22,12 @@
 		},
 		"getDialogNodes": function (context) {
 			return context.state.dialogNodes;
+		},
+		"getArrayOfEntities": function (context) {
+			return context.state.entitiesArray;
+		},
+		"getArrayOfIntents": function (context) {
+			return context.state.intentsArray;
 		}
 	};
 

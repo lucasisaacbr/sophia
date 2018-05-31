@@ -174,6 +174,37 @@
 				.then((result) => res.status(200).send(result))
 				.catch((error) => res.status(500).send(error));
 		});
+
+		app.post("/deleteNode", ensureAdmin, (req,res) => {
+			let payload = {
+				...params,
+				"dialog_node": req.body.dialog_node
+			};
+
+			watsonAssistant.deleteDialogNode(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
+
+		app.post("/addDialogNode", ensureAdmin, (req, res) => {
+			let payload = {
+				...params,
+				"dialog_node": req.body.dialog_node,
+				"conditions": req.body.conditions,
+				"output": {
+					"text": {
+						"values": [req.body.nodeResponse]
+					}
+				},
+				"title": req.body.title
+			};
+
+			watsonAssistant.createDialogNode(credentials, payload)
+				.then((result) => res.status(200).send(result))
+				.catch((error) => res.status(500).send(error));
+		});
+
+
 	}
 
 }());
