@@ -16,6 +16,18 @@
 		},
 		"changeView": function (context, newView) {
 			context.state.view =  newView;
+		},
+		"examples": function (context, examples) {
+			context.state.examples = examples;
+		},
+		"dialogNodes": function (context, dn) {
+			context.state.dialogNodes = dn;
+		},
+		"entitiesArray": function (context, ettArr) {
+			context.state.entitiesArray = ettArr;
+		},
+		"intentsArray": function (context, ittArr) {
+			context.state.intentsArray = ittArr;
 		}
 	}
 

@@ -16,6 +16,18 @@
 		},
 		"getView": function (context) {
 			return context.state.view;
+		},
+		"getExamples": function (context) {
+			return context.state.examples;
+		},
+		"getDialogNodes": function (context) {
+			return context.state.dialogNodes;
+		},
+		"getArrayOfEntities": function (context) {
+			return context.state.entitiesArray;
+		},
+		"getArrayOfIntents": function (context) {
+			return context.state.intentsArray;
 		}
 	};
 

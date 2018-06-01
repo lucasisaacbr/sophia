@@ -4,10 +4,10 @@
 	const getUser = require("../../factory/factory").getActiveUser;
 
 	module.exports = {
-		"getUserName": function () {
+		"getUserName": function (context) {
 			getUser().then((user) => {
-				return user.username;
-			})
+				context.commit("setUserName", user.username);
+			});
 		}
 	};
 

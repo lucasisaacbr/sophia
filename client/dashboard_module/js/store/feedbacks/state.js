@@ -7,6 +7,10 @@
 			"negativeFB": [],
 			"entities": [],
 			"intents": [],
+			"examples": [],
+			"dialogNodes": [],
+			"entitiesArray": [],
+			"intentsArray": [],
 			"view": "negative"
 		}
 	};
