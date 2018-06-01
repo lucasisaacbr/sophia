@@ -2,7 +2,7 @@
 	"use strict";
 
 	module.exports = {
-		"connectionString": "mongodb://127.0.0.1:27017/test"
+		"connectionString": process.env.MONGO_CONNECTION_STRING
 	}
 
 }());
