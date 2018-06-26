@@ -3,7 +3,7 @@
 
 	module.exports = {
 		"state": {
-			"username": ""
+			"user": {}
 		}
 	};
 }());

@@ -25,6 +25,12 @@
         <ul class="menu-list">
             <li><a :class="[getView === 'dialog' ? 'is-active' : '']" @click="dialogView">Nós de diálogo</a></li>
         </ul>
+        <p class="menu-label">
+            Usuários
+        </p>
+        <ul class="menu-list">
+            <li><a :class="[getView === 'form' ? 'is-active' : '']" @click="signUpForm">Cadastrar</a></li>
+        </ul>
     </aside>
 </template>
 
@@ -59,6 +65,9 @@
 			},
             listEntities() {
 				this.$store.dispatch("feedbacks/entities").then(() => this.$store.commit("feedbacks/changeView", "entity"));
+            },
+            signUpForm() {
+            	this.$store.commit("feedbacks/changeView", "form");
             },
             dialogView() {
             	this.$store.commit("feedbacks/changeView", "dialog");

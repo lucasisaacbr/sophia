@@ -18,6 +18,11 @@
 		require("./helpers/dashboardHelper")(app, ensureAdmin);
 		require("./helpers/watsonHelper")(app, ensureAdmin, watsonAssistant);
 
+		app.get("/", function (req,res) {
+			res.redirect("/login");
+		});
 	}
+
+
 
 }());

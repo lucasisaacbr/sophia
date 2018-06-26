@@ -14,7 +14,6 @@
                 <input @keyup.enter="setEmail" type="text" class="input is-info form-field" v-model="inputEmail"/>
                 <div class="btn-container">
                     <a class="button is-outlined is-small is-info" @click="setEmail">Enviar</a>
-                    <a class="button is-outlined is-small is-primary" @click="">Registrar</a>
                 </div>
             </div>
         </template>
@@ -31,8 +30,6 @@
                 </div>
             </div>
         </template>
-
-
     </div>
 </template>
 

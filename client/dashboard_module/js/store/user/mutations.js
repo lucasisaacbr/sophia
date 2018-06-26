@@ -4,8 +4,8 @@
 
 	module.exports = {
 
-		"setUserName": function (context, name) {
-			context.state.username = name;
+		"userObj": function (context, obj) {
+			context.state.user = obj;
 		}
 
 	}

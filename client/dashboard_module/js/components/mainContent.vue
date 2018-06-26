@@ -5,6 +5,7 @@
         <intents-content v-if="getView === 'intent'"></intents-content>
         <entities-content v-if="getView === 'entity'"></entities-content>
         <dialog-content v-if="getView === 'dialog'"></dialog-content>
+        <sign-in-form v-if="getView === 'form'"></sign-in-form>
     </div>
 </template>
 
@@ -20,7 +21,8 @@
             "positiveContent": require("./positive-content.vue"),
             "intentsContent": require("./intents-content.vue"),
             "entitiesContent": require("./entities-content.vue"),
-            "dialogContent": require("./dialog-content.vue")
+            "dialogContent": require("./dialog-content.vue"),
+            "signInForm": require("./signInForm.vue")
 		},
         "data": function () {
             return {

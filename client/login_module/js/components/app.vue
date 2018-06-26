@@ -12,10 +12,6 @@
                 </div>
                 <login-form></login-form>
             </div>
-
-            <div id="utils">
-                <h6>teste 2</h6>
-            </div>
         </div>
     </div>
 </template>

@@ -2,8 +2,8 @@
 	"use strict";
 
 	module.exports = {
-		"getUserName": function (context) {
-			return context.state.username;
+		"getUser": function (context) {
+			return context.state.user;
 		}
 	};
 
