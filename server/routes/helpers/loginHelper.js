@@ -40,7 +40,9 @@
 				"password": user.senha,
 				"admin": user.admin || false,
 				"perfil": user.perfil || ""
-			})
+			});
+
+			return res.status(200).send("OK");
 
 		})
 	}
